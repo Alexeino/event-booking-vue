@@ -19,7 +19,7 @@
             :title="event.title"
             :when="event.date"
             :description="event.description"
-            @register="$emit('register', event)"
+            @click="handleRegisteration(event)"
           />
         </template>
         <template v-else>
@@ -41,8 +41,9 @@ import EventCard from '@/components/EventCard.vue';
 import RoundButton from './RoundButton.vue';
 import { ref, onMounted } from 'vue';
 import SectionedCard from '@/components/SectionedCard.vue';
+import useBookings from '@/composables/useBookings';
 
-defineEmits(['register']);
+const { handleRegisteration } = useBookings();
 
 const loading = ref(false);
 const events = ref([]);
